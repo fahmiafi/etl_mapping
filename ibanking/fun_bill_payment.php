@@ -1,0 +1,36 @@
+<?php
+$mandatory = [
+    'TRANSACTIONID',
+    'INCOMINGOROUTGOINGFLAG',
+    'PARTYCUSTOMERID',
+    'PARTYACCOUNTNUMBER',
+    'TRANSACTIONDATETIME',
+    'TRANSACTIONAMOUNT',
+    'TRANSACTIONTYPE',
+    'TRANSACTIONCATEGORY',
+    'CHANNELCODE',
+    'BILLERID',
+    'BILLINGNUMBER',
+    'INTERNATIONALINDICATOR',
+    'ONUSFLAG',
+    'USERID',
+    'RESPONSECODE',
+    // 'ERRORCODE',
+    'SESSIONID',
+    'LANGUAGECODE',
+    'AUTHID',
+];
+
+$default_mapping = [
+    'INCOMINGOROUTGOINGFLAG' => 'D',
+    'TRANSACTIONCATEGORY' => 'Bill Payment',
+    'CHANNELCODE' => 'IBR',
+    'INTERNATIONALINDICATOR' => 'D',
+    'ONUSFLAG' => 'OnUs',
+    'LANGUAGECODE' => '002',
+];
+
+$default_mapping_keys = array_keys($default_mapping);
+
+$q_where_tran_id_unmatch = "TRANSACTIONID != CONCAT('IBR', REPLACE(REPLACE(REPLACE(TRANSACTIONDATETIME, ':', ''), '-', ''),' ', ''), PARTYCUSTOMERID)";
+$q_where_tran_id_match = "TRANSACTIONID = CONCAT('IBR', REPLACE(REPLACE(REPLACE(TRANSACTIONDATETIME, ':', ''), '-', ''),' ', ''), PARTYCUSTOMERID)";

@@ -1,0 +1,67 @@
+<?php
+$default_mapping = [
+    'INCOMINGOROUTGOINGFLAG' => 'D',
+    'PARTYVIRTUALACCOUNTNUMBER' => '',
+    'COUNTERPARTYACCOUNTNUMBER' => '',
+    'COUNTERPARTYVIRTUALACCOUNTNUMBER' => '',
+    'COUNTERPARTYBANKCODE' => '',
+    'COUNTERPARTYBANKNAME' => '',
+    'COUNTERPARTYACCOUNTCOUNTRY' => '',
+    'ORIGTRANSACTIONAMT' => '',
+    'ORIGTRANSACTIONCURRENCYCD' => '',
+    'TRANSACTIONCATEGORY' => 'Purchase',
+    'CHANNELCODE' => ' PHB',
+    'BILLERID' => '',
+    'INTERNATIONALINDICATOR' => 'D',
+    'FINGERPRINTID' => '',
+    'IPADDRESS' => '',
+    'ONUSFLAG' => ' OnUs',
+    'SOURCEOFFUNDS' => '',
+    'USERID' => '',
+    'AGENT46ID' => '',
+    'ERRORCODE' => '',
+    'ERRORCODEDESC' => '',
+    'QRCODETYPE' => '',
+    'LATITUDE' => '',
+    'LONGITUDE' => '',
+    'REMARK' => '',
+    'CARDNUMBERINDICATOR' => '',
+    'MERCHANTID' => '',
+    'MERCHANTNAME' => '',
+    'MERCHANTCATEGORYCODE' => '',
+    'AUTHSOURCE' => '',
+    'AVAILABLEBALANCE' => '',
+    'POSENTRYMODE' => '',
+    'VERIFICATIONMETHOD' => '',
+    'TERMINALID' => '',
+    'ECOMMERCEINDICATOR' => '',
+    'PARTYVIRTUALCARDNUMBER' => '',
+    'ATMCAPABILITY' => '',
+];
+
+$mandatory = [
+    'TRANSACTIONID',
+    'INCOMINGOROUTGOINGFLAG',
+    'PARTYCUSTOMERID',
+    'PARTYACCOUNTNUMBER',
+    'TRANSACTIONDATETIME',
+    'TRANSACTIONAMOUNT',
+    'TRANSACTIONTYPE',
+    'TRANSACTIONCATEGORY',
+    'CHANNELCODE',
+    'BILLINGNUMBER',
+    'INTERNATIONALINDICATOR',
+    'DEVICEID',
+    'ONUSFLAG',
+    'RESPONSECODE',
+    'SESSIONID',
+    'LANGUAGECODE',
+    'PARTYCARDNUMBER',
+    'AUTHID',
+];
+$default_mapping_keys = array_keys($default_mapping);
+
+// $q_where_tran_id_unmatch = "TRANSACTIONID != CONCAT('IBR', REPLACE(REPLACE(REPLACE(TRANSACTIONDATETIME, ':', ''), '-', ''),' ', ''), PARTYCUSTOMERID)";
+// $q_where_tran_id_match = "TRANSACTIONID = CONCAT('IBR', REPLACE(REPLACE(REPLACE(TRANSACTIONDATETIME, ':', ''), '-', ''),' ', ''), PARTYCUSTOMERID)";
+$q_where_tran_id_unmatch = '';
+$q_where_tran_id_match = '';

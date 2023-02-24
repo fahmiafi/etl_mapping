@@ -1,0 +1,33 @@
+<?php
+$mandatory = [
+    'TRANSACTIONID',
+    'INCOMINGOROUTGOINGFLAG',
+    'PARTYCUSTOMERID',
+    'PARTYACCOUNTNUMBER',
+    'TRANSACTIONDATETIME',
+    'TRANSACTIONAMOUNT',
+    'TRANSACTIONTYPE',
+    'TRANSACTIONCATEGORY',
+    'CHANNELCODE',
+    'BILLERID',
+    'BILLINGNUMBER',
+    'INTERNATIONALINDICATOR',
+    'DEVICEID',
+    'ONUSFLAG',
+    'RESPONSECODE',
+    // 'ERRORCODE',
+    'AUTHID',
+];
+
+
+$default_mapping = [
+    'INCOMINGOROUTGOINGFLAG' => 'D',
+    'TRANSACTIONCATEGORY' => 'Top Up',
+    'CHANNELCODE' => 'SMB',
+    'INTERNATIONALINDICATOR' => 'D',
+    'ONUSFLAG' => 'OnUs'
+];
+$default_mapping_keys = array_keys($default_mapping);
+
+$q_where_tran_id_unmatch = "TRANSACTIONID != CONCAT('SMB', REPLACE(REPLACE(REPLACE(TRANSACTIONDATETIME, ':', ''), '-', ''),' ', ''), PARTYCUSTOMERID)";
+$q_where_tran_id_match = "TRANSACTIONID = CONCAT('SMB', REPLACE(REPLACE(REPLACE(TRANSACTIONDATETIME, ':', ''), '-', ''),' ', ''), PARTYCUSTOMERID)";
