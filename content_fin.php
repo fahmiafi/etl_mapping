@@ -131,9 +131,9 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
     </div>
     <?php
     $name_file = date('YmdGis').'_'.$name_channel.'_'.$_POST['tran_type'].'.xlsx';
-    // mysqli_query($con, "INSERT INTO export_excel (name, date, category) VALUES ('$name_file', '".date('Y-m-d G:i:s')."', '$name_channel')");
-    // $writer = new Xlsx($spreadsheet);
-    // $writer->save('../download/'.$name_file);
+    mysqli_query($con, "INSERT INTO export_excel (name, date, category) VALUES ('$name_file', '".date('Y-m-d G:i:s')."', '$name_channel')");
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('../download/'.$name_file);
 
     ?>
     <br>

@@ -92,7 +92,6 @@ function default_mapping($kolom, $data)
 {
     global $default_mapping;
 
-    // echo $data;
     if ($data == $default_mapping[$kolom]) {
         return true;
     }

@@ -88,21 +88,21 @@ function ERRORCODE($id)
     return false;
 }
 
-function default_mapping($kolom, $x)
+function default_mapping($kolom, $data)
 {
     global $default_mapping;
 
-    if ($x == $default_mapping[$kolom]) {
+    if ($data == $default_mapping[$kolom]) {
         return true;
     }
     return false;
 }
 
 function kolom_mandatory($id, $param, $kolom){
-    global $con;
+    global $con, $tabel;
     
     if ($kolom == 'ERRORCODE') {
-        $q = mysqli_query($con, "SELECT ID, RESPONSECODE, ERRORCODE FROM sms_fin WHERE ID = '$id'");
+        $q = mysqli_query($con, "SELECT ID, RESPONSECODE, ERRORCODE, ERRORCODEDESC FROM $tabel WHERE ID = '$id'");
         $dt = mysqli_fetch_array($q);
         if ($dt['RESPONSECODE'] == 'ok' && $param == '') {
             return true;

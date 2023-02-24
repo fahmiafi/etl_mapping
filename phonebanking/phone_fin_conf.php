@@ -93,7 +93,6 @@ function default_mapping($kolom, $data)
 {
     global $default_mapping;
 
-    // echo $data;
     if ($data == $default_mapping[$kolom]) {
         return true;
     }
@@ -104,7 +103,7 @@ function kolom_mandatory($id, $param, $kolom){
     global $con, $tabel;
     
     if ($kolom == 'ERRORCODE') {
-        $q = mysqli_query($con, "SELECT ID, RESPONSECODE, ERRORCODE FROM $tabel WHERE ID = '$id'");
+        $q = mysqli_query($con, "SELECT ID, RESPONSECODE, ERRORCODE, ERRORCODEDESC FROM $tabel WHERE ID = '$id'");
         $dt = mysqli_fetch_array($q);
         if ($dt['RESPONSECODE'] == 'ok' && $param == '') {
             return true;
