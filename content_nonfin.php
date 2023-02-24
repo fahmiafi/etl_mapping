@@ -5,7 +5,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
     <h3>Tipe transaksi yang terdapat pada data:</h3>
     <?php
     $no = 1;
-    $q_tran_tipe = mysqli_query($con, "SELECT DISTINCT(TRANSACTIONTYPE) FROM $tabel WHERE TransactionCategory = '".$_POST['tran_type']."'");
+    $q_tran_tipe = mysqli_query($con, "SELECT DISTINCT(TRANSACTIONTYPE) FROM $tabel WHERE TransactionType = '".$_POST['tran_type']."'");
     while($dt_tran_tipe = mysqli_fetch_array($q_tran_tipe)){
         echo $no++.". ".$dt_tran_tipe['TRANSACTIONTYPE']."<br>";
     }
@@ -19,7 +19,7 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
         <?php
         $limit = $_POST['limit'];
         $id_data = [];
-        $sql = mysqli_query($con, "SELECT id FROM $tabel WHERE TransactionCategory = '".$_POST['tran_type']."' AND $query_where ".$_POST['where']." LIMIT $limit");
+        $sql = mysqli_query($con, "SELECT ID FROM $tabel WHERE TransactionType = '".$_POST['tran_type']."' AND $query_where ".$_POST['where']." LIMIT $limit");
         while ($dt = mysqli_fetch_assoc($sql)) {
             $id_data[] = $dt['ID'];
         }
@@ -59,24 +59,24 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         // <kondisi jika ada yang mappingan khusus>
                         $cek = true;
                         $color = "FFFFFF";
-                        if ($kolom[$i] == 'TRANSACTIONID') {
+                        if ($kolom[$i] == 'TransactionId') {
                             $cek = TRANSACTIONID($id);
                             $note = "Pada data transaction_id ".$data[$kolom[$i]]." tidak sesuai";
                         }
                         elseif (in_array($kolom[$i], $default_mapping_keys)) {
                             $cek = default_mapping($kolom[$i], $data[$kolom[$i]]);
-                            $note = "Kolom ".$kolom[$i]." = ".$data[$kolom[$i]].", pada transaction_id ".$data['TRANSACTIONID']." sesuai mappingan";
+                            $note = "Kolom ".$kolom[$i]." = ".$data[$kolom[$i]].", pada transaction_id ".$data['TransactionId']." sesuai mappingan";
                         }
                         elseif (in_array($kolom[$i], $mandatory)) {
                             $cek = kolom_mandatory($id, $data[$kolom[$i]], $kolom[$i]);
-                            $note = "Kolom ".$kolom[$i]." pada transaction_id ".$data['TRANSACTIONID']." tidak terisi";
+                            $note = "Kolom ".$kolom[$i]." pada transaction_id ".$data['TransactionId']." tidak terisi";
                         }
                         // </kondisi jika ada yang mappingan khusus>
 
                         if ($channelcode == 'IBR' || $channelcode == 'SMB') {
                             if($kolom[$i] == 'ERRORCODE' || $kolom[$i] == 'ERRORCODEDESC'){
                                 $cek = ERRORCODE($id);
-                                $note = "Kolom ".$kolom[$i]." pada transaction_id ".$data['TRANSACTIONID']." tidak terisi";
+                                $note = "Kolom ".$kolom[$i]." pada transaction_id ".$data['TransactionId']." tidak terisi";
                             }
                         }
                         elseif ($channelcode == 'IBA'){
@@ -91,8 +91,8 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
                         else{
                             // $notes[] = $note;
                             $note = $data[$kolom[$i]] == '' ? 'NULL' : $data[$kolom[$i]];
-                            if ($kolom[$i] != 'TRANSACTIONID') {
-                                $note .= ">>".$data['TRANSACTIONID'];
+                            if ($kolom[$i] != 'TransactionId') {
+                                $note .= ">>".$data['TransactionId'];
                             }
                             array_push($note_false, $note);
                             $color = "FFD700";
@@ -131,9 +131,9 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
     </div>
     <?php
     $name_file = date('YmdGis').'_'.$name_channel.'_'.$_POST['tran_type'].'.xlsx';
-    mysqli_query($con, "INSERT INTO export_excel (name, date, category) VALUES ('$name_file', '".date('Y-m-d G:i:s')."', '$name_channel')");
-    $writer = new Xlsx($spreadsheet);
-    $writer->save('../download/'.$name_file);
+    // mysqli_query($con, "INSERT INTO export_excel (name, date, category) VALUES ('$name_file', '".date('Y-m-d G:i:s')."', '$name_channel')");
+    // $writer = new Xlsx($spreadsheet);
+    // $writer->save('../download/'.$name_file);
 
     ?>
     <br>

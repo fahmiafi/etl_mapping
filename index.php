@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Finansial</h3>
     <ul>
         <li>
             <a href="smsbanking/sms_fin.php?name=SMS Banking Finansial">SMS Banking Finansial</a>
@@ -18,8 +19,23 @@
             <a href="ibanking/ibank_fin.php?name=Internet Banking Finansial">Internet Banking Finansial</a>
         </li>
         <li>
-            <a href="agen_ibank/agen_ibank_fin.php?name=Agen46 Internet Banking Finansial">Agen46 Internet Banking Finansial</a>
+            <a href="agen_ibank/agen_ibank_fin.php?name=Agen46 Internet Banking Finansial">Sedang Perbaikan >> Agen46 Internet Banking Finansial</a>
         </li>
+    </ul>
+    <h3>NonFinansial</h3>
+    <ul>
+        <li>
+            <a href="smsbanking/sms_nonfin.php?name=SMS Banking Non Finansial">SMS Banking NonFinansial</a>
+        </li>
+        <li>
+            <a href="phonebanking/phone_nonfin.php?name=Phone Banking NonFinansial">Phone Banking NonFinansial</a>
+        </li>
+        <!-- <li>
+            <a href="ibanking/ibank_fin.php?name=Internet Banking Finansial">Internet Banking Finansial</a>
+        </li> -->
+        <!-- <li>
+            <a href="agen_ibank/agen_ibank_fin.php?name=Agen46 Internet Banking Finansial">Sedang Perbaikan >> Agen46 Internet Banking Finansial</a>
+        </li> -->
     </ul>
 </body>
 </html>

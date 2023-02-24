@@ -71,9 +71,9 @@ function TRANSACTIONID($id)
 
 function ERRORCODE($id)
 {
-    global $con;
+    global $con, $tabel;
     
-    $q = mysqli_query($con, "SELECT ID, RESPONSECODE, ERRORCODE FROM sms_fin WHERE ID = '$id'");
+    $q = mysqli_query($con, "SELECT ID, RESPONSECODE, ERRORCODE FROM $tabel WHERE ID = '$id'");
     $dt = mysqli_fetch_array($q);
     if ($dt['RESPONSECODE'] == 'ok') {
         if ($dt['ERRORCODE'] == '') {
