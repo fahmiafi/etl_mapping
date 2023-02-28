@@ -1,3 +1,12 @@
+<?php
+$channelcode = [
+    'PHB',
+    'SMB',
+    'IBA',
+    'MBA',
+    'IBR',
+];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +16,23 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Dari Satu File data Inject</h3>
+    <h3>Financial</h3>
+    <ol>
+        <?php
+        for ($i=0; $i < count($channelcode); $i++) { 
+            if ($channelcode[$i] != 'MBA') {
+            
+            ?>
+            <li>
+                <a href="all_financial/all.php?channel=<?= $channelcode[$i]?>"><?= $channelcode[$i]?></a>
+            </li>
+            <?php
+            }
+        }
+        ?>
+    </ol>
+    <br><br>
     <h3>Finansial</h3>
     <ul>
         <li>

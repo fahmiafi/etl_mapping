@@ -55,18 +55,19 @@ $kolom = [
 
 function TRANSACTIONID($id)
 {
-    global $con;
+    global $con, $tabel;
     
+    return true;
     //SMB+YYYYMMDDHHMMSS+Journal_Number
-    $q = mysqli_query($con, "SELECT * FROM agen_fin WHERE ID = '$id'");
-    $dt = mysqli_fetch_array($q);
+    // $q = mysqli_query($con, "SELECT * FROM $tabel WHERE ID = '$id'");
+    // $dt = mysqli_fetch_array($q);
 
-    $data = "IBA".str_replace(array('-', ':', ' '), "", $dt['TRANSACTIONDATETIME']).$dt['PARTYACCOUNTNUMBER'];
+    // $data = "IBA".str_replace(array('-', ':', ' '), "", $dt['TRANSACTIONDATETIME']).$dt['PARTYACCOUNTNUMBER'];
 
-    if ($data == $dt['TRANSACTIONID']) {
-        return true;
-    }
-    return false;
+    // if ($data == $dt['TRANSACTIONID']) {
+    //     return true;
+    // }
+    // return false;
 }
 
 function ERRORCODE($id)

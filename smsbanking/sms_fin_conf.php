@@ -55,10 +55,10 @@ $kolom = [
 
 function TRANSACTIONID($id)
 {
-    global $con;
+    global $con, $tabel;
     
     //SMB+YYYYMMDDHHMMSS+Journal_Number
-    $q = mysqli_query($con, "SELECT * FROM sms_fin WHERE ID = '$id'");
+    $q = mysqli_query($con, "SELECT * FROM $tabel WHERE ID = '$id'");
     $dt = mysqli_fetch_array($q);
 
     $data = "SMB".str_replace(array('-', ':', ' '), "", $dt['TRANSACTIONDATETIME']).$dt['PARTYCUSTOMERID'];

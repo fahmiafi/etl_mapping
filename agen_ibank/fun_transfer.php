@@ -30,6 +30,7 @@ $mandatory = [
     'LATITUDE',
     'LONGITUDE',
     'LANGUAGECODE',
+    'AUTHID',
 ];
 
 $default_mapping = [
